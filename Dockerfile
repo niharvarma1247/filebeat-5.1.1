@@ -15,6 +15,7 @@ RUN set -x && \
   tar xzvf filebeat.tar.gz && \
   cd filebeat-* && \
   cp filebeat /bin && \
+  curl -XPUT 'http://localhost:9200/_template/filebeat' -d@/etc/filebeat/filebeat.template.json \
   cd /opt && \
   rm -rf filebeat* && \
   apt-get purge -y wget && \
